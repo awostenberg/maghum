@@ -4,19 +4,18 @@ This folder contains the static GitHub Pages site.
 
 ## Local preview (recommended)
 
-From the project root:
+From the project root, run this one-liner to set everything up correctly:
 
 ```bash
-# Option 1: Python
-python -m http.server 8080 --directory site
-
-# Option 2: Node
-npx serve site
+mkdir -p site/data && cp data/paragraphs.json site/data/ && python -m http.server 8080 --directory site
 ```
 
-Then open http://localhost:8080
+Then open:
 
-**Important:** The site expects `../data/paragraphs.json` relative to the site folder when developing locally. The GitHub Action automatically copies `data/paragraphs.json` into `site/data/` on deploy.
+- Main page: http://localhost:8080
+- Direct to a paragraph: http://localhost:8080/#mh-47
+
+**Note:** The extra `cp` step is only needed for local development. GitHub Actions automatically copies the JSON into `site/data/` during deployment.
 
 ## Production
 

@@ -60,6 +60,21 @@ Each entry looks like:
 
 This guarantees that the web page and the bot always quote the exact same text.
 
+## Trying the site locally
+
+Run this command from the project root:
+
+```bash
+mkdir -p site/data && cp data/paragraphs.json site/data/ && python -m http.server 8080 --directory site
+```
+
+Then open:
+
+- `http://localhost:8080` — the full document
+- `http://localhost:8080/#mh-47` — direct link to a specific paragraph
+
+The “Copy MH 47” buttons and deep linking all work locally.
+
 ## Discord Bot
 
 The bot (in `bot/`) provides commands such as:

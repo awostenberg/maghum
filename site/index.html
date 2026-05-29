@@ -95,17 +95,17 @@
 
     async function loadParagraphs() {
       try {
-        const res = await fetch('../data/paragraphs.json');
+        const res = await fetch('./data/paragraphs.json');
         if (!res.ok) throw new Error('Failed to load paragraphs');
         return await res.json();
       } catch (e) {
-        // Fallback: show a message if running without server
         const container = document.getElementById('content');
         container.innerHTML = `
-          <div class="bg-amber-50 border border-amber-200 rounded p-4 text-amber-800 text-sm">
-            <strong>Note:</strong> To see the full text, serve the site from the project root 
-            (e.g. <code class="font-mono">python -m http.server</code> from the <code>site/</code> folder)
-            or build a small deployment step that copies <code>data/</code> into <code>site/</code>.
+          <div class="bg-amber-50 border border-amber-200 rounded-lg p-5 text-sm">
+            <p class="font-medium text-amber-900 mb-2">Paragraphs not found</p>
+            <p class="text-amber-800">The site is looking for <code class="font-mono bg-amber-100 px-1 rounded">data/paragraphs.json</code> next to <code class="font-mono">index.html</code>.</p>
+            <p class="mt-2 text-amber-700">Run this from the project root to test locally:</p>
+            <pre class="mt-2 bg-amber-100 text-amber-900 p-3 rounded font-mono text-xs overflow-x-auto">mkdir -p site/data && cp data/paragraphs.json site/data/ && python -m http.server 8080 --directory site</pre>
           </div>
         `;
         return [];
