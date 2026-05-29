@@ -1,0 +1,19 @@
+# Dependencies
+node_modules/
+bot/node_modules/
+
+# Build artifacts
+dist/
+site/data/
+
+# OS
+.DS_Store
+
+# Editor
+.idea/
+.vscode/
+*.swp
+
+# Secrets
+.env
+*.pem

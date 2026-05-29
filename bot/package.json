@@ -1,0 +1,20 @@
+{
+  "name": "maghum-bot",
+  "version": "0.1.0",
+  "description": "Discord bot for Magnifica Humanitas paragraph references (MH 47 style)",
+  "type": "module",
+  "main": "dist/index.js",
+  "scripts": {
+    "dev": "tsx watch src/index.ts",
+    "build": "tsc",
+    "start": "node dist/index.js"
+  },
+  "dependencies": {
+    "discord.js": "^14.18.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.13.0",
+    "tsx": "^4.19.0",
+    "typescript": "^5.7.0"
+  }
+}
