@@ -7,7 +7,7 @@ This folder contains the static GitHub Pages site.
 From the project root, run this one-liner to set everything up correctly:
 
 ```bash
-mkdir -p site/data && cp data/paragraphs.json site/data/ && python -m http.server 8080 --directory site
+mkdir -p site/data && cp data/paragraphs.json site/data/ && python3 -m http.server 8080 --directory site
 ```
 
 Then open:

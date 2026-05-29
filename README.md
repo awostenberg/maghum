@@ -65,7 +65,7 @@ This guarantees that the web page and the bot always quote the exact same text.
 Run this command from the project root:
 
 ```bash
-mkdir -p site/data && cp data/paragraphs.json site/data/ && python -m http.server 8080 --directory site
+mkdir -p site/data && cp data/paragraphs.json site/data/ && python3 -m http.server 8080 --directory site
 ```
 
 Then open:
