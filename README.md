@@ -11,7 +11,7 @@ Every paragraph has a stable, short reference:
 
 - **MH 47** — preferred short form for chat and Discord
 - *Magnifica Humanitas* §47 — more formal written use
-- Direct link: `https://<username>.github.io/maghum/#mh-47`
+- Direct link: `https://<your-username>.github.io/maghum/#mh-47`
 
 ### Why this style?
 
@@ -59,6 +59,32 @@ Each entry looks like:
 ```
 
 This guarantees that the web page and the bot always quote the exact same text.
+
+## Deployment (GitHub Pages)
+
+The site is designed to deploy automatically via GitHub Actions.
+
+### One-time setup
+
+1. Create a new public GitHub repository named `maghum`.
+2. Push this code to it:
+   ```bash
+   git remote add origin https://github.com/YOUR_USERNAME/maghum.git
+   git push -u origin main
+   ```
+3. Go to your repo → **Settings → Pages**
+   - Under "Build and deployment", set **Source** to **GitHub Actions**.
+4. Push any change (or manually trigger the "Deploy site to GitHub Pages" workflow).
+
+Your site will be live at:
+
+```
+https://YOUR_USERNAME.github.io/maghum/
+```
+
+### Updating the site
+
+Just push to `main`. The workflow will rebuild and redeploy automatically.
 
 ## Trying the site locally
 
