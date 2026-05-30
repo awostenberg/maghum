@@ -11,7 +11,7 @@ Every paragraph has a stable, short reference:
 
 - **MH 47** — preferred short form for chat and Discord
 - *Magnifica Humanitas* §47 — more formal written use
-- Direct link: `https://<your-username>.github.io/maghum/#mh-47`
+- Direct link: `https://awostenberg.github.io/maghum/#mh-47`
 
 ### Why this style?
 
@@ -79,7 +79,7 @@ The site is designed to deploy automatically via GitHub Actions.
 Your site will be live at:
 
 ```
-https://YOUR_USERNAME.github.io/maghum/
+https://awostenberg.github.io/maghum/
 ```
 
 ### Updating the site

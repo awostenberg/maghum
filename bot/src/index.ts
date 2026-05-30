@@ -70,7 +70,7 @@ client.on('interactionCreate', async interaction => {
     const embed = new EmbedBuilder()
       .setTitle(`Magnifica Humanitas ${formatCitation(num)}–${formatCitation(to)}`)
       .setDescription(selected.map(p => `**${formatCitation(p.number)}**\n${p.text.slice(0, 280)}${p.text.length > 280 ? '…' : ''}`).join('\n\n'))
-      .setURL(`https://<USERNAME>.github.io/maghum/#mh-${num}`)
+      .setURL(`https://awostenberg.github.io/maghum/#mh-${num}`)
       .setFooter({ text: 'magnifica humanitas • maghum' });
 
     await interaction.editReply({ embeds: [embed] });
@@ -84,7 +84,7 @@ client.on('interactionCreate', async interaction => {
     const embed = new EmbedBuilder()
       .setTitle(`Magnifica Humanitas ${formatCitation(num)}`)
       .setDescription(p.text)
-      .setURL(`https://<USERNAME>.github.io/maghum/#mh-${num}`)
+      .setURL(`https://awostenberg.github.io/maghum/#mh-${num}`)
       .setFooter({ text: p.section || '' });
 
     await interaction.editReply({ embeds: [embed] });
