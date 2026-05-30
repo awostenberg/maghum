@@ -70,7 +70,7 @@
       <div class="font-semibold mb-2">Citation style</div>
       <div class="text-slate-600">
         Use <span class="font-semibold text-slate-800">MH 47</span> in Discord and discussion.<br>
-        Copies as: <span class="font-mono text-xs bg-stone-100 px-1.5 py-0.5 rounded">MH 47: https://.../#mh-47</span>
+        “Copy” button gives a clean link you can paste anywhere.
       </div>
       <button onclick="copyExampleCitation()" 
               class="mt-3 text-xs px-3 py-1.5 rounded-md bg-slate-800 text-white hover:bg-black transition-colors">
@@ -175,12 +175,11 @@
     function copyCitation(number, id) {
       const text = `MH ${number}`;
       const url = `${location.origin}${location.pathname}#${id}`;
-      const copyText = `${text}: ${url}`;
 
-      navigator.clipboard.writeText(copyText).then(() => {
+      navigator.clipboard.writeText(url).then(() => {
         const toast = document.createElement('div');
         toast.className = 'fixed bottom-4 right-4 bg-slate-900 text-white text-xs px-4 py-2 rounded shadow-lg';
-        toast.textContent = `Copied: ${text}`;
+        toast.textContent = `Copied link for ${text}`;
         document.body.appendChild(toast);
         setTimeout(() => toast.remove(), 1600);
       });
@@ -189,11 +188,10 @@
     function copyExampleCitation() {
       const text = 'MH 12';
       const url = `${location.origin}${location.pathname}#mh-12`;
-      const copyText = `${text}: ${url}`;
-      navigator.clipboard.writeText(copyText).then(() => {
+      navigator.clipboard.writeText(url).then(() => {
         const toast = document.createElement('div');
         toast.className = 'fixed bottom-4 right-4 bg-slate-900 text-white text-xs px-4 py-2 rounded shadow-lg';
-        toast.textContent = 'Copied example: MH 12';
+        toast.textContent = 'Copied link for MH 12';
         document.body.appendChild(toast);
         setTimeout(() => toast.remove(), 1600);
       });
