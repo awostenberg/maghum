@@ -78,6 +78,28 @@
       </button>
     </div>
 
+    <!-- JUMP TO PARAGRAPH - easy to remove later -->
+    <div id="jump-box" class="mb-10 rounded-lg bg-white border border-stone-200 p-5 text-sm">
+      <div class="font-semibold mb-2">Jump to paragraph</div>
+      <form id="jump-form" class="flex gap-2">
+        <input type="number" id="jump-input" min="1" max="245" placeholder="e.g. 47"
+               class="flex-1 px-3 py-1.5 text-sm border border-stone-300 rounded-md focus:outline-none focus:ring-1 focus:ring-slate-400">
+        <button type="submit"
+                class="px-4 py-1.5 text-sm bg-slate-800 text-white rounded-md hover:bg-black transition-colors">
+          Go
+        </button>
+      </form>
+      <div id="jump-error" class="text-red-600 text-xs mt-1 hidden">Paragraph not found.</div>
+    </div>
+    <!-- END JUMP TO PARAGRAPH -->
+
+    <!-- Floating jump button - subtle, always available, easy to remove -->
+    <button onclick="document.getElementById('jump-input').focus(); document.getElementById('jump-input').select(); document.getElementById('jump-box').scrollIntoView({behavior:'smooth', block:'center'})"
+            class="fixed bottom-6 right-6 px-3 py-1.5 text-sm bg-white border border-stone-300 rounded-full shadow hover:shadow-md transition-all z-50">
+      Jump to paragraph
+    </button>
+    <!-- END floating jump button -->
+
     <!-- Content -->
     <main id="content" class="encyclical-text"></main>
 
@@ -178,7 +200,7 @@
 
       navigator.clipboard.writeText(`${text}: ${url}`).then(() => {
         const toast = document.createElement('div');
-        toast.className = 'fixed bottom-4 right-4 bg-slate-900 text-white text-xs px-4 py-2 rounded shadow-lg';
+        toast.className = 'fixed bottom-4 left-4 bg-slate-900 text-white text-xs px-4 py-2 rounded shadow-lg z-[60]';
         toast.textContent = `Copied: ${text}`;
         document.body.appendChild(toast);
         setTimeout(() => toast.remove(), 1600);
@@ -190,7 +212,7 @@
       const url = `${location.origin}${location.pathname}#mh-12`;
       navigator.clipboard.writeText(`${text}: ${url}`).then(() => {
         const toast = document.createElement('div');
-        toast.className = 'fixed bottom-4 right-4 bg-slate-900 text-white text-xs px-4 py-2 rounded shadow-lg';
+        toast.className = 'fixed bottom-4 left-4 bg-slate-900 text-white text-xs px-4 py-2 rounded shadow-lg z-[60]';
         toast.textContent = `Copied: ${text}`;
         document.body.appendChild(toast);
         setTimeout(() => toast.remove(), 1600);
@@ -203,6 +225,48 @@
         const id = document.activeElement.id;
         const match = id.match(/mh-(\d+)/);
         if (match) copyCitation(parseInt(match[1]), id);
+      }
+    });
+
+    // Jump to paragraph form (easy to remove)
+    const jumpForm = document.getElementById('jump-form');
+    const jumpInput = document.getElementById('jump-input');
+
+    if (jumpForm) {
+      jumpForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const error = document.getElementById('jump-error');
+        const num = parseInt(jumpInput.value, 10);
+
+        if (!num || num < 1 || num > 245) {
+          error.textContent = 'Please enter a number between 1 and 245.';
+          error.classList.remove('hidden');
+          return;
+        }
+
+        const el = document.getElementById('mh-' + num);
+        if (el) {
+          el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          error.classList.add('hidden');
+          // Brief highlight
+          const orig = el.style.backgroundColor;
+          el.style.backgroundColor = '#fef3c7';
+          setTimeout(() => { el.style.backgroundColor = orig; }, 1200);
+        } else {
+          error.textContent = 'Paragraph not found.';
+          error.classList.remove('hidden');
+        }
+      });
+    }
+
+    // Keyboard shortcut: press "/" or "g" to focus the jump input (easy to remove)
+    document.addEventListener('keydown', (e) => {
+      if ((e.key === '/' || e.key.toLowerCase() === 'g') && document.activeElement.tagName === 'BODY') {
+        e.preventDefault();
+        if (jumpInput) {
+          jumpInput.focus();
+          jumpInput.select();
+        }
       }
     });
 
